@@ -1,0 +1,29 @@
+.breadcrumbs__section{
+    position: relative;
+    padding: 26px 0;
+    .breadcrumbs{
+        display: flex;
+        align-items: center;
+        a{
+            font-size: 16px;
+            color: $secondary_color;
+            transition: all 0.3s ease;
+            &:hover{
+                color: $secondary_color;
+            }
+        }
+        .divider{
+            margin: 0 10px;
+            font-size: 16px;
+            color: $black_color;
+        }
+        .current__item{
+            font-size: 16px;
+            color: $black_color;
+            text-transform: capitalize;
+        }
+    }
+    @media screen and (max-width: $xxl){
+        padding: 16px 0;
+    }
+}

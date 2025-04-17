@@ -1,0 +1,30 @@
+@import "variables";
+@import "reset";
+@import "header";
+@import "footer";
+@import "./components/breadcrumbs";
+@import "./components/accordion_items";
+@import "./components/hero_banner_section";
+@import "./components/resident_tab_section";
+@import "./components/enquire_popup";
+
+main{
+      position: relative;
+}
+.main__sticky__content{
+      min-height: calc(100vh - 151px);
+}
+.section_heading{
+      font-size: 40px;
+      font-weight: 900;
+      margin-bottom: 54px;
+      color: $ternary_color;
+      text-align: center;
+      @media screen and (max-width: $xl){
+            font-size: 24px;
+            margin-bottom: 24px;
+      }
+}
+.no__scroll{
+      overflow: hidden;
+}

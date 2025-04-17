@@ -1,0 +1,66 @@
+.acc__item{
+    &__sec{
+        position: relative;
+        padding: 94px 0;
+        @media screen and (max-width: $xl){
+            padding: 60px 0;
+        }
+    }
+    &__block{
+        position: relative;
+    }
+    &__item{
+        position: relative;
+        border-bottom: 1px solid #E0E0E0;
+        margin-bottom: 20px;
+        padding: 0 0 20px 0;
+    }
+    &__item.active{
+        .acc__item__head{
+            &:after{
+                display:none;
+            }
+        }
+    }
+    &__head{
+        position: relative;
+        cursor: pointer;
+        padding: 0 30px 0 0;
+        h3{
+            font-size: 18px;
+            font-weight: 600;
+            color: $black_color;
+        }
+        &:before{
+            position: absolute;
+            content: '';
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 2px;
+            background-color: $black_color;
+        }
+        &:after{
+            position: absolute;
+            content: '';
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 10px;
+            background-color: $black_color;
+        }
+    }
+    &__body{
+        display: none;
+        p{
+            margin-top: 12px;
+            font-size: 18px;
+            line-height: 1.7;
+            @media screen and (max-width: $xl){
+                font-size: 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.footer{
+      position: relative;
+      background-color: #232323;
+      padding: 40px 0 100px 0;
+      &__top{
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
+      }
+      &__add__item{
+            margin-bottom: 30px;
+            h3{
+                  font-size: 20px;
+                  color: $white_color;
+                  margin-bottom: 5px;
+            }
+            p{
+                  font-size: 16px;
+                  font-family: $robotoFont;
+                  color: $quaternary_color;
+            }
+      }
+      &__social{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-flow: row wrap;
+            gap: 0 20px;
+            margin: 60px 0 0 0;
+            span{
+                  font-size: 16px;
+                  color: $white_color;
+                  @media screen and (max-width: $sm){
+                        margin-bottom: 10px;
+                  }
+            }
+            .social__media__links{
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 0 10px;
+                  a{
+                        display: block;
+                        width: 28px;
+                        height: 28px;
+                        transition: all 0.3s ease;
+                        &:hover{
+                              transform: translateY(-5px);
+                        }
+                        img{
+                              width: 100%;
+                              height: auto;
+                              display: block;
+                        }
+                  }
+            }
+            @media screen and (max-width: $xl){
+                  gap: 0 10px;
+                  margin-top: 40px;
+            }
+            @media screen and (max-width: $sm){
+                  justify-content: center;
+                  flex-direction: column;
+            }
+      }
+      @media screen and (max-width: $xl){
+            padding: 40px 0 60px 0;
+      }
+}
