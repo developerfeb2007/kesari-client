@@ -3,7 +3,7 @@ import axios from "axios";
 import { apiRoutes } from "@/app/models/commonConstants";
 
 export async function POST(request) {
-    const { name, contact, email } = await request.json();
+    const { name, contact, email, utm_campaign, utm_term, utm_source, utm_content, utm_medium } = await request.json();
   
     try {
         const response = await axios.post(
@@ -12,7 +12,12 @@ export async function POST(request) {
                 data:{
                     Name : name,
                     Contact : contact,
-                    Email : email
+                    Email : email,
+                    UTM_Campaign: utm_campaign,
+                    UTM_Term: utm_term,
+                    UTM_Source: utm_source,
+                    UTM_Content: utm_content,
+                    UTM_Medium: utm_medium
                 }
             },
             {

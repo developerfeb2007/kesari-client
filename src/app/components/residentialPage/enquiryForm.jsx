@@ -1,7 +1,7 @@
 "use client";
 
-// import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -23,6 +23,28 @@ export default function EnquiryForm({ onClose, redirectSlug }) {
     //     setShowPopup(false);
     //     router.push(`/residential/${redirectSlug}`);
     // };
+
+    const [utmParams, setUtmParams] = useState({
+        utm_source: '',
+        utm_medium: '',
+        utm_campaign: '',
+        utm_term: '',
+        utm_content: ''
+    });
+
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const newUtmParams = {
+            utm_source: searchParams.get('utm_source') || "",
+            utm_medium: searchParams.get('utm_medium') || "",
+            utm_campaign: searchParams.get('utm_campaign') || "",
+            utm_term: searchParams.get('utm_term') || "",
+            utm_content: searchParams.get('utm_content') || ""
+        }
+
+        setUtmParams(newUtmParams);
+    }, [searchParams]);
 
     const validationSchema = Yup.object({
         name: Yup.string()
@@ -57,10 +79,16 @@ export default function EnquiryForm({ onClose, redirectSlug }) {
     })
 
     const submitForm = async (formData) => {
+
+        const payload = {
+            ...formData,
+            ...utmParams,
+        };
+
         try {
             const response = await axios.post(
                 '/api/enquiry',
-                formData,
+                payload,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -125,6 +153,11 @@ export default function EnquiryForm({ onClose, redirectSlug }) {
             {formik.touched.email && formik.errors.email ? (
                     <div style={{ color: 'red', fontSize: '12px' }}>{formik.errors.email}</div>
                     ) : null}
+            <input type="hidden" name="utm_source" value={utmParams.utm_source} />
+            <input type="hidden" name="utm_medium" value={utmParams.utm_medium} />
+            <input type="hidden" name="utm_campaign" value={utmParams.utm_campaign} />
+            <input type="hidden" name="utm_term" value={utmParams.utm_term} />
+            <input type="hidden" name="utm_content" value={utmParams.utm_content} />
             <button type="submit" className="pop__sub__btn">
                 Submit
             </button>

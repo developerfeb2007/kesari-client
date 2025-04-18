@@ -2,6 +2,7 @@
 
 import {useState} from "react";
 import EnquiryForm from "./enquiryForm";
+import Image from "next/image";
 
 export default function PlotSection({plotData}) {
 
@@ -59,7 +60,7 @@ export default function PlotSection({plotData}) {
                                         <span>{plot.Properties[0].Location}</span>
                                     </div>
                                     <figure>
-                                        <img src={plot.Properties[0].Image.url} width="405" height="405" className="img-responsive" alt="" />
+                                        <Image src={plot.Properties[0].Image.url} width="405" height="405" className="img-responsive" alt="" />
                                         <div className="resd__share__holder">
                                             <div className={`icon__social__media prod__share__project__cta icon-share2 ${socialSharing === index ? "open" : ""}`} onClick={(e) => {handleSocialSharing(index)}}>
                                                 <a href="#" className={`fab copy_link ${socialSharing === index ? "active" : ""}`} title="Copy Link" onClick={(e) => {e.preventDefault(); handleCopyLink(`${siteURL}/residential/${plot.Properties[0].Slug}`)}}><i className="icon-copy"></i></a>
